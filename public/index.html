@@ -1,0 +1,65 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Dashboard 💎</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Chart.js is not needed if charting is disabled, but keeping it won't hurt -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+</head>
+<body>
+    <header>
+        <h1>Crypto Dashboard 💎</h1>
+        <div class="controls">
+            <select id="currency-selector" aria-label="Select Currency">
+                <option value="usd" selected>USD</option>
+                <option value="eur">EUR</option>
+            </select>
+            <button id="refresh-button" aria-label="Refresh Data">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-content-wrapper">
+            <!-- Add a class here for easier hiding if no chart data -->
+            <div id="main-chart-container" class="chart-hidden"> 
+                <!-- The canvas is still here, but updateMainChart won't be called without sparkline data -->
+                <canvas id="main-chart"></canvas> 
+            </div>
+            <div class="global-stats">
+                <div>
+                    <span>Total Market Cap</span>
+                    <span id="total-market-cap"></span>
+                </div>
+                <div>
+                    <span>24h Volume</span>
+                    <span id="24h-volume"></span>
+                </div>
+            </div>
+        </div>
+
+        <section class="top-coins-strip" aria-live="polite" aria-atomic="true">
+            <!-- Top 3 Coin Cards (Skeleton Loaders) will be here -->
+        </section>
+
+        <section class="all-coins-display" aria-live="polite" aria-atomic="true">
+            <!-- This will be populated by JS with cards or a table -->
+        </section>
+    </main>
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>
